@@ -40,15 +40,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-//ext {
-//    archivesBaseName = 'mincoin-wallet'
-//}
-
-
-
-
-
-
+ext {
+    archivesBaseName = 'mincoin-wallet'
+}
 
 
 android {
@@ -60,7 +54,7 @@ android {
 
     /*Setting default value for versionBuild which is the last incremented value stored in the file */
     if (versionPropsFile.canRead()) {
-        def Properties versionProps = new Properties()
+        Properties versionProps = new Properties()
         versionProps.load(new FileInputStream(versionPropsFile))
         versionBuild = versionProps['VERSION_BUILD'].toInteger()
     } else {
@@ -71,7 +65,7 @@ android {
     ext.autoIncrementBuildNumber = {
 
         if (versionPropsFile.canRead()) {
-            def Properties versionProps = new Properties()
+            Properties versionProps = new Properties()
             versionProps.load(new FileInputStream(versionPropsFile))
             versionBuild = versionProps['VERSION_BUILD'].toInteger() + 1
             versionProps['VERSION_BUILD'] = versionBuild.toString()
@@ -87,7 +81,7 @@ android {
     }
 
     defaultConfig {
-        applicationId 'de.schildbach.wallet_test'
+        applicationId 'de.schildbach.mincoin_wallet'
        // generatedDensities = ['hdpi', 'xhdpi', 'xxhdpi', 'xxxhdpi']
 
         dexOptions {
@@ -104,15 +98,15 @@ android {
             }
         }
 
-        minSdkVersion 26
+        minSdkVersion 24 //Android 7.0 Nougat //26 Android 8.0 Oreo
         targetSdkVersion 28
 
         // cryptodad Jul 2019
         // method to automatically increment build values in manifest.xml
         // Minimum SDK / NOT USED / MAJOR / MINOR / PATCH
         //       26         0         00      01      01
-        versionCode 260000201 //generateVersionCode() // integer Android uses this as a downgrade / upgrade marker
-        versionName "0.2." + versionBuild + "-beta" //generateVersionName() // string displayed to users
+        versionCode 240010000 //generateVersionCode() // integer Android uses this as a downgrade / upgrade marker
+        versionName "1.0." + versionBuild + "" //generateVersionName() // string displayed to users
     }
 
     buildTypes {
@@ -164,9 +158,9 @@ android {
     gradle.taskGraph.whenReady {taskGraph ->
         if (taskGraph.hasTask(assembleDebug)) {  /* when run debug task */
             autoIncrementBuildNumber()
-        } else if (taskGraph.hasTask(assembleRelease)) { /* when run release task */
-            autoIncrementBuildNumber()
-        }
+        }// else if (taskGraph.hasTask(assembleRelease)) { /* when run release task */
+        //    autoIncrementBuildNumber()
+       // }
     }
 
 }

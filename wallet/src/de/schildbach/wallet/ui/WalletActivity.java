@@ -223,7 +223,7 @@ public final class WalletActivity extends AbstractWalletActivity {
                 // delayed start so that UI has enough time to initialize
                 BlockchainService.start(WalletActivity.this, true);
             }
-        }, 1000);
+        }, 3000); /* cryptodad Jul 2019 - changed delay (was 1000) to reduce ui drawing issues */
     }
 
     @Override
@@ -236,13 +236,15 @@ public final class WalletActivity extends AbstractWalletActivity {
     private AnimatorSet buildEnterAnimation(final View contentView) {
         final Drawable background = getWindow().getDecorView().getBackground();
         final int duration = getResources().getInteger(android.R.integer.config_mediumAnimTime);
-        final Animator splashFadeOut = AnimatorInflater.loadAnimator(WalletActivity.this, R.animator.fade_out_drawable);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-            splashFadeOut.setTarget(((LayerDrawable) background).getDrawable(1));
-        else
-            splashFadeOut.setDuration(0); // skip this animation, as there is no splash icon
+
+        /* cryptodad Jul 2019 - remove splash screen code */
+        //final Animator splashFadeOut = AnimatorInflater.loadAnimator(WalletActivity.this, R.animator.fade_out_drawable);
+        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+        //    splashFadeOut.setTarget(((LayerDrawable) background).getDrawable(1));
+        //else
+        //    splashFadeOut.setDuration(0); // skip this animation, as there is no splash icon
         final AnimatorSet fragmentEnterAnimation = new AnimatorSet();
-        final AnimatorSet.Builder fragmentEnterAnimationBuilder = fragmentEnterAnimation.play(splashFadeOut);
+        //final AnimatorSet.Builder fragmentEnterAnimationBuilder = fragmentEnterAnimation.play(splashFadeOut);
 
         final View slideInLeftView = contentView.findViewWithTag("slide_in_left");
         if (slideInLeftView != null) {
@@ -260,7 +262,7 @@ public final class WalletActivity extends AbstractWalletActivity {
             slide.setTarget(slideInLeftView);
             final Animator fadeIn = AnimatorInflater.loadAnimator(WalletActivity.this, R.animator.fade_in_view);
             fadeIn.setTarget(slideInLeftView);
-            fragmentEnterAnimationBuilder.before(slide).before(fadeIn);
+            //fragmentEnterAnimationBuilder.before(slide).before(fadeIn); /* cryptodad Jul 2019 - removed, helps startup */
         }
 
         final View slideInRightView = contentView.findViewWithTag("slide_in_right");
@@ -279,7 +281,7 @@ public final class WalletActivity extends AbstractWalletActivity {
             slide.setTarget(slideInRightView);
             final Animator fadeIn = AnimatorInflater.loadAnimator(WalletActivity.this, R.animator.fade_in_view);
             fadeIn.setTarget(slideInRightView);
-            fragmentEnterAnimationBuilder.before(slide).before(fadeIn);
+            //fragmentEnterAnimationBuilder.before(slide).before(fadeIn); /* cryptodad Jul 2019 - removed, helps startup */
         }
 
         final View slideInTopView = contentView.findViewWithTag("slide_in_top");
@@ -298,7 +300,7 @@ public final class WalletActivity extends AbstractWalletActivity {
             slide.setTarget(slideInTopView);
             final Animator fadeIn = AnimatorInflater.loadAnimator(WalletActivity.this, R.animator.fade_in_view);
             fadeIn.setTarget(slideInTopView);
-            fragmentEnterAnimationBuilder.before(slide).before(fadeIn);
+            //fragmentEnterAnimationBuilder.before(slide).before(fadeIn); /* cryptodad Jul 2019 - removed, helps startup */
         }
 
         final View slideInBottomView = contentView.findViewWithTag("slide_in_bottom");
@@ -317,18 +319,18 @@ public final class WalletActivity extends AbstractWalletActivity {
             slide.setTarget(slideInBottomView);
             final Animator fadeIn = AnimatorInflater.loadAnimator(WalletActivity.this, R.animator.fade_in_view);
             fadeIn.setTarget(slideInBottomView);
-            fragmentEnterAnimationBuilder.before(slide).before(fadeIn);
+            //fragmentEnterAnimationBuilder.before(slide).before(fadeIn); /* cryptodad Jul 2019 - removed, helps startup */
         }
 
         if (levitateView != null) {
             final ObjectAnimator elevate = ObjectAnimator.ofFloat(levitateView, "elevation", 0.0f,
                     levitateView.getElevation());
             elevate.setDuration(duration);
-            fragmentEnterAnimationBuilder.before(elevate);
+            //fragmentEnterAnimationBuilder.before(elevate);
             final Drawable levitateBackground = levitateView.getBackground();
             final Animator fadeIn = AnimatorInflater.loadAnimator(WalletActivity.this, R.animator.fade_in_drawable);
             fadeIn.setTarget(levitateBackground);
-            fragmentEnterAnimationBuilder.before(fadeIn);
+           // fragmentEnterAnimationBuilder.before(fadeIn); /* cryptodad Jul 2019 - removed, helps startup */
         }
 
         return fragmentEnterAnimation;

@@ -156,11 +156,11 @@ public class RaiseFeeDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(final Bundle savedInstanceState) {
         final View view = LayoutInflater.from(activity).inflate(R.layout.raise_fee_dialog, null);
 
-        messageView = (TextView) view.findViewById(R.id.raise_fee_dialog_message);
+        messageView = view.findViewById(R.id.raise_fee_dialog_message);
 
         passwordGroup = view.findViewById(R.id.raise_fee_dialog_password_group);
 
-        passwordView = (EditText) view.findViewById(R.id.raise_fee_dialog_password);
+        passwordView = view.findViewById(R.id.raise_fee_dialog_password);
         passwordView.setText(null);
 
         badPasswordView = view.findViewById(R.id.raise_fee_dialog_bad_password);
@@ -341,10 +341,7 @@ public class RaiseFeeDialogFragment extends DialogFragment {
             return false;
 
         // We don't know dynamic fees here, so we need to guess.
-        if (findSpendableOutput(wallet, transaction, Transaction.DEFAULT_TX_FEE) == null)
-            return false;
-
-        return true;
+        return findSpendableOutput(wallet, transaction, Transaction.DEFAULT_TX_FEE) != null;
     }
 
     private static @Nullable TransactionOutput findSpendableOutput(final Wallet wallet, final Transaction transaction,

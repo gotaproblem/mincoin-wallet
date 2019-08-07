@@ -52,9 +52,10 @@ public class ViewPagerTabs extends View implements OnPageChangeListener {
         setSaveEnabled(true);
 
         paint.setTextSize(getResources().getDimension(R.dimen.font_size_tiny));
-        paint.setColor(Color.BLACK);
+        //paint.setColor(Color.BLACK);
+        paint.setColor(Color.WHITE);
         paint.setAntiAlias(true);
-        paint.setShadowLayer(2, 0, 0, Color.WHITE);
+       // paint.setShadowLayer(2, 0, 0, Color.WHITE);
     }
 
     public void addTabLabels(final int... labelResId) {
@@ -96,14 +97,33 @@ public class ViewPagerTabs extends View implements OnPageChangeListener {
         paint.setColor(Color.WHITE);
         canvas.drawPath(path, paint);
 
-        paint.setTypeface(Typeface.DEFAULT_BOLD);
+        //paint.setTypeface(Typeface.DEFAULT_BOLD);
+        paint.setTypeface(Typeface.DEFAULT);
         final float y = getPaddingTop() + -paint.getFontMetrics().top;
 
         for (int i = 0; i < labels.size(); i++) {
             final String label = labels.get(i);
 
-            paint.setTypeface(i == pagePosition ? Typeface.DEFAULT_BOLD : Typeface.DEFAULT);
-            paint.setColor(i == pagePosition ? Color.BLACK : Color.DKGRAY);
+            //paint.setTypeface(i == pagePosition ? Typeface.DEFAULT_BOLD : Typeface.DEFAULT);
+            paint.setTypeface(Typeface.DEFAULT);
+            //paint.setColor(i == pagePosition ? Color.BLACK : Color.DKGRAY);
+
+            /* cryptodad Jul 2019 - change text colour to reflect sent/received */
+            paint.setColor( Color.DKGRAY );
+            if ( pagePosition == 0 ) {
+                if ( i == 0 )
+                    paint.setColor( 0x00f000 );
+                else
+                    paint.setColor( 0xf00000 );
+            }
+
+            else {
+                if ( i == 0 )
+                    paint.setColor( 0x00f000 );
+                else
+                    paint.setColor( 0xf00000 );
+            }
+
 
             final float x = viewHalfWidth + (maxWidth + spacing) * (i - pageOffset);
             final float labelWidth = paint.measureText(label);

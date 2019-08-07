@@ -377,18 +377,14 @@ public final class PaymentIntent implements Parcelable {
         final boolean hasAmount = hasAmount();
         if (hasAmount != other.hasAmount())
             return false;
-        if (hasAmount && !getAmount().equals(other.getAmount()))
-            return false;
-        return true;
+        return !hasAmount || getAmount().equals(other.getAmount());
     }
 
     public boolean equalsAddress(final PaymentIntent other) {
         final boolean hasAddress = hasAddress();
         if (hasAddress != other.hasAddress())
             return false;
-        if (hasAddress && !getAddress().equals(other.getAddress()))
-            return false;
-        return true;
+        return !hasAddress || getAddress().equals(other.getAddress());
     }
 
     @Override

@@ -227,25 +227,25 @@ public class Block extends Message {
     public Coin getBlockInflation(int height) {
 
         /* cryptodad Jun 2019 - testnet */
-        if ( this.getParams().id.equals( NetworkParameters.ID_TESTNET ) ) {
+        //if ( this.getParams().id.equals( NetworkParameters.ID_TESTNET ) ) {
 
-            if ( height < 1440 )
-                return FIVE_HUNDRED_COINS.shiftRight( height / params.getSubsidyDecreaseBlockCount() );
+            if ( height > 0 && height < 1440 )
+                return FIVE_HUNDRED_COINS.shiftRight(height / params.getSubsidyDecreaseBlockCount());
 
-            else if ( height < 2880 )
+            if ( height < 2880 )
                 return ONE_HUNDRED_COINS.shiftRight( height / params.getSubsidyDecreaseBlockCount() );
 
-            else if ( height < 4320 )
+            if ( height < 4320 )
                 return FIFTY_COINS.shiftRight( height / params.getSubsidyDecreaseBlockCount() );
 
             return TWO_COINS.shiftRight( height / params.getSubsidyDecreaseBlockCount() );
-        }
+       // }
 
         /* mainnet */
-        else {
+       // else {
 
-            return TWO_COINS.shiftRight( height / params.getSubsidyDecreaseBlockCount() );
-        }
+        //    return TWO_COINS.shiftRight( height / params.getSubsidyDecreaseBlockCount() );
+       // }
         /* cryptodad Jun 2019 end */
 
         //return FIFTY_COINS.shiftRight(height / params.getSubsidyDecreaseBlockCount());

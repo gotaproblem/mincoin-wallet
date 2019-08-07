@@ -84,10 +84,11 @@ public class ExchangeRatesProvider extends ContentProvider {
 
     private static final HttpUrl MNC_EXCHANGE_URL = HttpUrl
             //.parse("https://tradesatoshi.com/api/public/getticker?market=MNC_BTC");
-            .parse("https://www.mincoinexplorer.com/aw/mnc-value");
+            .parse("https://www.mincoinexplorer.com/aw/mnc-value"); /* cryptodad Jul 2019 - use own server */
 
     private static final String BITCOINAVERAGE_SOURCE = "BitcoinAverage.com";
-    private static final String MNC_EXCHANGE_SOURCE = "tradesatoshi.com";
+    //private static final String MNC_EXCHANGE_SOURCE = "tradesatoshi.com";
+    //private static final String MNC_EXCHANGE_SOURCE = "tradesatoshi.com";
 
     private static final long UPDATE_FREQ_MS = 10 * DateUtils.MINUTE_IN_MILLIS;
 
@@ -268,10 +269,10 @@ public class ExchangeRatesProvider extends ContentProvider {
                         //if (!fiatCurrencyCode.equals(MonetaryFormat.CODE_BTC)
                         //        && !fiatCurrencyCode.equals(MonetaryFormat.CODE_MBTC)
                         //        && !fiatCurrencyCode.equals(MonetaryFormat.CODE_UBTC)) {
-                            final JSONObject exchangeRecord = head.getJSONObject("result");
+                            final JSONObject exchangeRecord = head;//.getJSONObject("result");
                             log.info ( "exchangeRecord = " + exchangeRecord);
                             try {
-                                value = exchangeRecord.get("last");
+                                value = exchangeRecord.get("ask");
                                 //log.info("value = " + value);
                                 //if (value.signum() > 0)
                                 //    rates.put("USD", new ExchangeRate(
@@ -287,7 +288,7 @@ public class ExchangeRatesProvider extends ContentProvider {
                 watch.stop();
                 log.info("fetched exchange rates from {}, {} chars, took {}", MNC_EXCHANGE_URL, content.length(),
                         watch);
-                log.info( "tradesatoshi value = " + value );
+                log.info( "Nova Exchange value = " + value );
 
                 return value;
             } else {
@@ -330,10 +331,12 @@ public class ExchangeRatesProvider extends ContentProvider {
                             try {
                                 //final Fiat rate = parseFiatInexact(fiatCurrencyCode, exchangeRate.getString("last"));
                                 Double sum = 0.0;
-                                Object value = exchangeRate.get("last");
-                                Double mnc = (Double)getMNCvalue();
+                                Object value = exchangeRate.get("ask");
+                                log.info("ExhangeRate value = " + value);
+                                //Double mnc = (Double)getMNCvalue();
 
-                                sum = (Double)value * mnc;
+
+                                sum = (Double)value * Float.parseFloat( getMNCvalue().toString() );//mnc;
 
                                 final Fiat rate = parseFiatInexact(fiatCurrencyCode, sum.toString() );
 

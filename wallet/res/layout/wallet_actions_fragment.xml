@@ -1,11 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="?android:attr/actionBarSplitStyle"
+    style="@style/My.Widget.ActionBar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#0573a4"
+    android:background="#0572A4"
     android:measureWithLargestChild="true"
     android:orientation="horizontal"
-    android:theme="@android:style/ThemeOverlay.Material.Dark.ActionBar">
+    android:theme="@style/My.Widget.ActionBar">
 
     <Button
         android:id="@+id/wallet_actions_request"

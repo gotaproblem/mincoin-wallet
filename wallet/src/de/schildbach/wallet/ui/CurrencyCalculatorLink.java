@@ -117,7 +117,7 @@ public final class CurrencyCalculatorLink {
                 return null;
             try {
                 final Coin btcAmount = exchangeRate.fiatToCoin(localAmount);
-                if (((Coin) btcAmount).isGreaterThan(Constants.NETWORK_PARAMETERS.getMaxMoney()))
+                if (btcAmount.isGreaterThan(Constants.NETWORK_PARAMETERS.getMaxMoney()))
                     throw new ArithmeticException();
                 return btcAmount;
             } catch (ArithmeticException x) {
@@ -158,7 +158,7 @@ public final class CurrencyCalculatorLink {
                     btcAmountView.setAmount(null, false);
                     try {
                         final Coin btcAmount = exchangeRate.fiatToCoin(localAmount);
-                        if (((Coin) btcAmount).isGreaterThan(Constants.NETWORK_PARAMETERS.getMaxMoney()))
+                        if (btcAmount.isGreaterThan(Constants.NETWORK_PARAMETERS.getMaxMoney()))
                             throw new ArithmeticException();
                         btcAmountView.setHint(btcAmount);
                     } catch (final ArithmeticException x) {

@@ -44,7 +44,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
  * @author Andreas Schildbach
  */
 public final class Constants {
-    public static final boolean TEST = true;
+    public static final boolean TEST = false;
 
     /** Network this wallet is on (e.g. testnet or mainnet). */
     public static final NetworkParameters NETWORK_PARAMETERS = TEST ? TestNet4Params.get() : MainNetParams.get();
@@ -86,7 +86,7 @@ public final class Constants {
         public static final String WALLET_FILENAME_PROTOBUF = "wallet-protobuf" + FILENAME_NETWORK_SUFFIX;
 
         /** How often the wallet is autosaved. */
-        public static final long WALLET_AUTOSAVE_DELAY_MS = 3 * DateUtils.SECOND_IN_MILLIS;
+        public static final long WALLET_AUTOSAVE_DELAY_MS = 60 * DateUtils.SECOND_IN_MILLIS;
 
         /** Filename of the automatic key backup (old format, can only be read). */
         public static final String WALLET_KEY_BACKUP_BASE58 = "key-backup-base58" + FILENAME_NETWORK_SUFFIX;
@@ -174,7 +174,7 @@ public final class Constants {
     public static final String BINARY_URL = "https://github.com/gotaproblem/dev-mincoin/releases";
 
     public static final int PEER_DISCOVERY_TIMEOUT_MS = 10 * (int) DateUtils.SECOND_IN_MILLIS;
-    public static final int PEER_TIMEOUT_MS = 15 * (int) DateUtils.SECOND_IN_MILLIS;
+    public static final int PEER_TIMEOUT_MS = 60 * (int) DateUtils.SECOND_IN_MILLIS; /* cryptodad Jul 2019 - changed to 1 minute was 15 secs */
 
     public static final long LAST_USAGE_THRESHOLD_JUST_MS = DateUtils.HOUR_IN_MILLIS;
     public static final long LAST_USAGE_THRESHOLD_RECENTLY_MS = 2 * DateUtils.DAY_IN_MILLIS;
@@ -190,7 +190,7 @@ public final class Constants {
     //public static final Coin SOME_BALANCE_THRESHOLD = Coin.COIN.divide(200);
     public static final Coin SOME_BALANCE_THRESHOLD = Coin.COIN.multiply(200); /* cryptodad Jun 2019 - 200 MNC */
 
-    public static final int SDK_DEPRECATED_BELOW = Build.VERSION_CODES.LOLLIPOP;
+    public static final int SDK_DEPRECATED_BELOW = Build.VERSION_CODES.N; //.LOLLIPOP;
 
     public static final int NOTIFICATION_ID_CONNECTED = 1;
     public static final int NOTIFICATION_ID_COINS_RECEIVED = 2;

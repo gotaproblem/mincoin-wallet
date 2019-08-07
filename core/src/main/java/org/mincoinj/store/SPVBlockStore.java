@@ -42,7 +42,7 @@ public class SPVBlockStore implements BlockStore {
 
     /** The default number of headers that will be stored in the ring buffer. */
     //public static final int DEFAULT_CAPACITY = 5000;
-    public static final int DEFAULT_CAPACITY = 3000;
+    public static final int DEFAULT_CAPACITY = 3000; /* cryptodad Jul 2019 reduce for better performance */
     public static final String HEADER_MAGIC = "SPVB";
 
     protected volatile MappedByteBuffer buffer;

@@ -7,7 +7,8 @@
     android:paddingBottom="8dp"
     android:paddingLeft="@dimen/list_entry_padding_horizontal_lax"
     android:paddingRight="@dimen/list_entry_padding_horizontal_lax"
-    android:paddingTop="16dp" >
+    android:paddingTop="16dp"
+    android:theme="@style/My.Theme" >
 
     <ImageView
         android:id="@android:id/icon"
@@ -26,6 +27,7 @@
         android:layout_weight="1"
         android:textAllCaps="true"
         android:textSize="@dimen/font_size_small"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+         />
 
 </LinearLayout>

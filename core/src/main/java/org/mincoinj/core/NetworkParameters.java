@@ -144,10 +144,10 @@ public abstract class NetworkParameters {
 
             //if ( n.getId().equals(ID_MAINNET))
             //if ( n.id == "org.mincoin.production" )
-            //    t.addOutput(new TransactionOutput(n, t, FIFTY_COINS, scriptPubKeyBytes.toByteArray()));
+                t.addOutput(new TransactionOutput(n, t, FIFTY_COINS, scriptPubKeyBytes.toByteArray()));
             //else
                 //if ( testnet )
-                t.addOutput(new TransactionOutput(n, t, FIVE_HUNDRED_COINS, scriptPubKeyBytes.toByteArray()));
+             //   t.addOutput(new TransactionOutput(n, t, FIVE_HUNDRED_COINS, scriptPubKeyBytes.toByteArray()));
             /* cryptodad end */
 
         } catch (Exception e) {
@@ -158,9 +158,7 @@ public abstract class NetworkParameters {
         return genesisBlock;
     }
 
-    //public static final int TARGET_TIMESPAN = 14 * 24 * 60 * 60;  // 2 weeks per difficulty cycle, on average.
-    public static final int TARGET_TIMESPAN = 60 * 60;  //* cryptodad May 2019 mincoin POW 60 minutes */
-    //public static final int TARGET_SPACING = 10 * 60;  // 10 minutes per block.
+    public static final int TARGET_TIMESPAN = 60 * 60;  //* cryptodad May 2019 mincoin POW 60 minutes - mainnet height > 7500 only else 12 * 60 * 60*/
     public static final int TARGET_SPACING = 60;  /* cryptodad May 2019 mincoin POW 1 minute */
     public static final int INTERVAL = TARGET_TIMESPAN / TARGET_SPACING;
     

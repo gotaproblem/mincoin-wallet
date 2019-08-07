@@ -142,7 +142,8 @@ public class Configuration {
     }
 
     public String getTrustedPeerHost() {
-        return Strings.emptyToNull(prefs.getString(PREFS_KEY_TRUSTED_PEER, "45.77.90.192").trim());
+        //return Strings.emptyToNull(prefs.getString(PREFS_KEY_TRUSTED_PEER, "45.77.90.192").trim()); /* cryptodad Jul 2019 testnet4 */
+        return Strings.emptyToNull(prefs.getString(PREFS_KEY_TRUSTED_PEER, "").trim());
     }
 
     public boolean getTrustedPeerOnly() {

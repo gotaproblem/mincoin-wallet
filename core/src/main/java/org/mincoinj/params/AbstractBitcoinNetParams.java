@@ -49,7 +49,7 @@ public abstract class AbstractBitcoinNetParams extends NetworkParameters {
      * Scheme part for Bitcoin URIs.
      */
     public static final String BITCOIN_SCHEME = "mincoin";
-    public static final int REWARD_HALVING_INTERVAL = 0;
+    public static final int REWARD_HALVING_INTERVAL = 0;    /* cryptodad Jun 2019 - mincoin does not use halving */
 
     private static final Logger log = LoggerFactory.getLogger(AbstractBitcoinNetParams.class);
 
@@ -83,13 +83,13 @@ public abstract class AbstractBitcoinNetParams extends NetworkParameters {
 
 
     /* cryptodad May 2019 - use DGW3 put in AbstractBlockChain.java */
-    private void verifyDifficulty(BigInteger calcDiff, StoredBlock storedPrev, Block nextBlock, int algo)
+   /* private void verifyDifficulty(BigInteger calcDiff, StoredBlock storedPrev, Block nextBlock, int algo)
     {
         //if (calcDiff.compareTo(CoinDefinition.getProofOfWorkLimit(algo)) > 0) {
         if (calcDiff.compareTo( getMaxTarget() ) > 0) {
             log.info("Difficulty hit proof of work limit: {}", calcDiff.toString(16));
             //calcDiff = CoinDefinition.getProofOfWorkLimit(algo); /* cryptodad */
-            calcDiff = getMaxTarget();
+    /*        calcDiff = getMaxTarget();
         }
         int accuracyBytes = (int) (nextBlock.getDifficultyTarget() >>> 24) - 3;
         BigInteger receivedDifficulty = nextBlock.getDifficultyTargetAsInteger();
@@ -101,7 +101,7 @@ public abstract class AbstractBitcoinNetParams extends NetworkParameters {
         if (calcDiff.compareTo(receivedDifficulty) != 0)
             throw new VerificationException("Network provided difficulty bits do not match what was calculated: " +
                     receivedDifficulty.toString(16) + " vs " + calcDiff.toString(16));
-    }
+    }*/
 /*
     @Override
     public void checkDifficultyTransitions(final StoredBlock storedPrev, final Block nextBlock,

@@ -4,7 +4,7 @@
     <string name="symbol_to">→</string>
     <string name="symbol_from">←</string>
     <string name="symbol_internal">⇄</string>
-    <string name="app_name">Mincoin Wallet [testnet4]</string>
+    <string name="app_name">Mincoin Wallet</string>
     <string name="app_name_short">Mincoin</string>
 
     <string-array name="preferences_precision_values">
@@ -22,10 +22,10 @@
         <item>@string/preferences_precision_labels_0_6</item>
     </string-array>
     <string-array name="preferences_block_explorer_values">
-        <item>http://www.testnet.mincoinexplorer.com/</item>
+        <item>https://www.mincoinexplorer.com/</item>
     </string-array>
     <string-array name="preferences_block_explorer_labels">
-        <item>http://www.testnet.mincoinexplorer.com/</item>
+        <item>https://www.mincoinexplorer.com/</item>
     </string-array>
 
 </resources>

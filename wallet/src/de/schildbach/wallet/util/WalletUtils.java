@@ -89,9 +89,7 @@ public class WalletUtils {
         public boolean equals(final Object o) {
             if (o == this)
                 return true;
-            if (o == null || o.getClass() != getClass())
-                return false;
-            return true;
+            return o != null && o.getClass() == getClass();
         }
 
         @Override

@@ -132,16 +132,16 @@ public final class WalletBalanceFragment extends Fragment {
             viewBalance.setEnabled(false);
         }
 
-        viewBalanceBtc = (CurrencyTextView) view.findViewById(R.id.wallet_balance_btc);
+        viewBalanceBtc = view.findViewById(R.id.wallet_balance_btc);
         viewBalanceBtc.setPrefixScaleX(0.9f);
 
-        viewBalanceWarning = (TextView) view.findViewById(R.id.wallet_balance_warning);
+        viewBalanceWarning = view.findViewById(R.id.wallet_balance_warning);
 
-        viewBalanceLocal = (CurrencyTextView) view.findViewById(R.id.wallet_balance_local);
+        viewBalanceLocal = view.findViewById(R.id.wallet_balance_local);
         //viewBalanceLocal.setInsignificantRelativeSize(1); /* cryptodad Jul 2019 */
         //viewBalanceLocal.setStrikeThru(Constants.TEST); /* cryptodad Jul 2019 */
 
-        viewProgress = (TextView) view.findViewById(R.id.wallet_balance_progress);
+        viewProgress = view.findViewById(R.id.wallet_balance_progress);
     }
 
     @Override

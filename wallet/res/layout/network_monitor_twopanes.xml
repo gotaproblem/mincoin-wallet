@@ -14,12 +14,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/list_entry_padding_vertical"
             android:layout_marginLeft="@dimen/list_entry_padding_horizontal"
-            android:layout_marginRight="@dimen/list_entry_padding_horizontal"
             android:layout_marginTop="@dimen/list_entry_padding_vertical"
+            android:layout_marginRight="@dimen/list_entry_padding_horizontal"
+            android:layout_marginBottom="@dimen/list_entry_padding_vertical"
             android:text="@string/network_monitor_peer_list_title"
-            android:textColor="@color/fg_less_significant"
+            android:textColor="@color/fg_white"
             android:textSize="@dimen/font_size_small"
             android:textStyle="bold" />
 
@@ -29,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="1"
+            android:textColor="@color/fg_white"
             android:background="@color/bg_bright" />
     </LinearLayout>
 
@@ -43,12 +44,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/list_entry_padding_vertical"
             android:layout_marginLeft="@dimen/list_entry_padding_horizontal"
-            android:layout_marginRight="@dimen/list_entry_padding_horizontal"
             android:layout_marginTop="@dimen/list_entry_padding_vertical"
+            android:layout_marginRight="@dimen/list_entry_padding_horizontal"
+            android:layout_marginBottom="@dimen/list_entry_padding_vertical"
             android:text="@string/network_monitor_block_list_title"
-            android:textColor="@color/fg_less_significant"
+            android:textColor="@color/fg_white"
             android:textSize="@dimen/font_size_small"
             android:textStyle="bold" />
 
@@ -58,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="1"
+            android:textColor="@color/fg_white"
             android:background="@color/bg_bright" />
     </LinearLayout>
 

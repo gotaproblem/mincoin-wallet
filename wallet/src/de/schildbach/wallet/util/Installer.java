@@ -32,7 +32,7 @@ public enum Installer {
 
     public final String displayName;
 
-    private Installer(final String displayName) {
+    Installer(final String displayName) {
         this.displayName = displayName;
     }
 

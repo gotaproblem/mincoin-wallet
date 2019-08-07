@@ -95,9 +95,9 @@ public final class ScanActivity extends AbstractWalletActivity
             clickView.getLocationOnScreen(clickViewLocation);
             final Intent intent = new Intent(activity, ScanActivity.class);
             intent.putExtra(ScanActivity.INTENT_EXTRA_SCENE_TRANSITION_X,
-                    (int) (clickViewLocation[0] + clickView.getWidth() / 2));
+                    (clickViewLocation[0] + clickView.getWidth() / 2));
             intent.putExtra(ScanActivity.INTENT_EXTRA_SCENE_TRANSITION_Y,
-                    (int) (clickViewLocation[1] + clickView.getHeight() / 2));
+                    (clickViewLocation[1] + clickView.getHeight() / 2));
             final ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(activity, clickView,
                     "transition");
             activity.startActivityForResult(intent, requestCode, options.toBundle());
@@ -165,8 +165,8 @@ public final class ScanActivity extends AbstractWalletActivity
 
         setContentView(R.layout.scan_activity);
         contentView = findViewById(android.R.id.content);
-        scannerView = (ScannerView) findViewById(R.id.scan_activity_mask);
-        previewView = (TextureView) findViewById(R.id.scan_activity_preview);
+        scannerView = findViewById(R.id.scan_activity_mask);
+        previewView = findViewById(R.id.scan_activity_preview);
         previewView.setSurfaceTextureListener(this);
 
         cameraThread = new HandlerThread("cameraThread", Process.THREAD_PRIORITY_BACKGROUND);

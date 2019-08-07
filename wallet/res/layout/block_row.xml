@@ -10,12 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bg_less_bright"
-        android:paddingBottom="@dimen/list_entry_padding_vertical_cram"
         android:paddingLeft="@dimen/list_entry_padding_horizontal"
-        android:paddingRight="@dimen/list_entry_padding_horizontal"
         android:paddingTop="@dimen/list_entry_padding_vertical_cram"
+        android:paddingRight="@dimen/list_entry_padding_horizontal"
+        android:paddingBottom="@dimen/list_entry_padding_vertical_cram"
         android:text="@string/block_row_mining_reward_adjustment"
-        android:textColor="@color/fg_less_significant"
+        android:textColor="@color/fg_white"
         android:textSize="@dimen/font_size_small" />
 
     <TextView
@@ -23,12 +23,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bg_less_bright"
-        android:paddingBottom="@dimen/list_entry_padding_vertical_cram"
         android:paddingLeft="@dimen/list_entry_padding_horizontal"
-        android:paddingRight="@dimen/list_entry_padding_horizontal"
         android:paddingTop="@dimen/list_entry_padding_vertical_cram"
+        android:paddingRight="@dimen/list_entry_padding_horizontal"
+        android:paddingBottom="@dimen/list_entry_padding_vertical_cram"
         android:text="@string/block_row_mining_difficulty_adjustment"
-        android:textColor="@color/fg_less_significant"
+        android:textColor="@color/fg_white"
         android:textSize="@dimen/font_size_small" />
 
     <FrameLayout

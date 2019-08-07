@@ -173,13 +173,13 @@ public class SweepWalletFragment extends Fragment {
             final Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.sweep_wallet_fragment, container);
 
-        messageView = (TextView) view.findViewById(R.id.sweep_wallet_fragment_message);
+        messageView = view.findViewById(R.id.sweep_wallet_fragment_message);
 
         passwordViewGroup = view.findViewById(R.id.sweep_wallet_fragment_password_group);
-        passwordView = (EditText) view.findViewById(R.id.sweep_wallet_fragment_password);
+        passwordView = view.findViewById(R.id.sweep_wallet_fragment_password);
         badPasswordView = view.findViewById(R.id.sweep_wallet_fragment_bad_password);
 
-        balanceView = (TextView) view.findViewById(R.id.sweep_wallet_fragment_balance);
+        balanceView = view.findViewById(R.id.sweep_wallet_fragment_balance);
 
         hintView = view.findViewById(R.id.sweep_wallet_fragment_hint);
 
@@ -188,7 +188,7 @@ public class SweepWalletFragment extends Fragment {
                 .setLayoutAnimation(AnimationUtils.loadLayoutAnimation(activity, R.anim.transaction_layout_anim));
         sweepTransactionViewHolder = new TransactionsAdapter.TransactionViewHolder(view);
 
-        viewGo = (Button) view.findViewById(R.id.send_coins_go);
+        viewGo = view.findViewById(R.id.send_coins_go);
         viewGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -199,7 +199,7 @@ public class SweepWalletFragment extends Fragment {
             }
         });
 
-        viewCancel = (Button) view.findViewById(R.id.send_coins_cancel);
+        viewCancel = view.findViewById(R.id.send_coins_cancel);
         viewCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {

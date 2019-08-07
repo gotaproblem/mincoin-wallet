@@ -151,10 +151,10 @@ public class RestoreWalletDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(final Bundle savedInstanceState) {
         final View view = LayoutInflater.from(activity).inflate(R.layout.restore_wallet_dialog, null);
-        messageView = (TextView) view.findViewById(R.id.restore_wallet_dialog_message);
-        fileView = (Spinner) view.findViewById(R.id.import_keys_from_storage_file);
-        passwordView = (EditText) view.findViewById(R.id.import_keys_from_storage_password);
-        showView = (CheckBox) view.findViewById(R.id.import_keys_from_storage_show);
+        messageView = view.findViewById(R.id.restore_wallet_dialog_message);
+        fileView = view.findViewById(R.id.import_keys_from_storage_file);
+        passwordView = view.findViewById(R.id.import_keys_from_storage_password);
+        showView = view.findViewById(R.id.import_keys_from_storage_show);
         replaceWarningView = view.findViewById(R.id.restore_wallet_from_storage_dialog_replace_warning);
 
         final DialogBuilder builder = new DialogBuilder(activity);
@@ -196,10 +196,10 @@ public class RestoreWalletDialogFragment extends DialogFragment {
                 if (row == null)
                     row = inflater.inflate(R.layout.restore_wallet_file_row, null);
 
-                final TextView filenameView = (TextView) row.findViewById(R.id.wallet_import_keys_file_row_filename);
+                final TextView filenameView = row.findViewById(R.id.wallet_import_keys_file_row_filename);
                 filenameView.setText(file.getName());
 
-                final TextView securityView = (TextView) row.findViewById(R.id.wallet_import_keys_file_row_security);
+                final TextView securityView = row.findViewById(R.id.wallet_import_keys_file_row_security);
                 final String encryptedStr = context
                         .getString(isEncrypted ? R.string.import_keys_dialog_file_security_encrypted
                                 : R.string.import_keys_dialog_file_security_unencrypted);
@@ -208,7 +208,7 @@ public class RestoreWalletDialogFragment extends DialogFragment {
                                 : R.string.import_keys_dialog_file_security_internal);
                 securityView.setText(encryptedStr + ", " + storageStr);
 
-                final TextView createdView = (TextView) row.findViewById(R.id.wallet_import_keys_file_row_created);
+                final TextView createdView = row.findViewById(R.id.wallet_import_keys_file_row_created);
                 createdView.setText(context.getString(
                         isExternal ? R.string.import_keys_dialog_file_created_manual
                                 : R.string.import_keys_dialog_file_created_automatic,
@@ -233,7 +233,7 @@ public class RestoreWalletDialogFragment extends DialogFragment {
                     @Override
                     protected boolean needsPassword() {
                         final File selectedFile = (File) fileView.getSelectedItem();
-                        return selectedFile != null ? Crypto.OPENSSL_FILE_FILTER.accept(selectedFile) : false;
+                        return selectedFile != null && Crypto.OPENSSL_FILE_FILTER.accept(selectedFile);
                     }
                 };
                 passwordView.addTextChangedListener(dialogButtonEnabler);

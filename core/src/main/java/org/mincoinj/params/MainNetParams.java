@@ -24,6 +24,11 @@ import java.net.*;
 
 import static com.google.common.base.Preconditions.*;
 
+import org.slf4j.Logger; /* cryptodad Aug 2019 - debug */
+import org.slf4j.LoggerFactory; /* cryptodad Aug 2019 - debug */
+
+
+
 /**
  * Parameters for the main production network on which people trade goods and services.
  */
@@ -32,16 +37,17 @@ public class MainNetParams extends AbstractBitcoinNetParams {
     public static final int MAINNET_MAJORITY_REJECT_BLOCK_OUTDATED = 9500;
     public static final int MAINNET_MAJORITY_ENFORCE_BLOCK_UPGRADE = 7500;
 
+    private static final Logger log = LoggerFactory.getLogger(MainNetParams.class); /* cryptodad Aug 2019 - debug */
+
     public MainNetParams() {
         super();
         interval = INTERVAL;
         targetTimespan = TARGET_TIMESPAN;
-        //maxTarget = Utils.decodeCompactBits(0x1e0ffff0L);
         maxTarget = Utils.decodeCompactBits(0x1f00ffffL);
         dumpedPrivateKeyHeader = 178;
         addressHeader = 50;
         p2shHeader = 5;
-        segwitAddressHrp = "bc";
+        segwitAddressHrp = "bc";        /* cryptodad Aug 2019 - this will need to be changed when Mincoin blockchain > 0.16 */
         port = 9334;
         packetMagic = 0x6342212cL;
         bip32HeaderP2PKHpub = 0x0488b21e; // The 4 byte header that serializes in base58 to "xpub".
@@ -54,23 +60,29 @@ public class MainNetParams extends AbstractBitcoinNetParams {
         majorityWindow = MAINNET_MAJORITY_WINDOW;
 
         genesisBlock.setDifficultyTarget(0x1e0ffff0L);
-        genesisBlock.setTime(1317972665);
+        genesisBlock.setTime(1317972665L);
         genesisBlock.setNonce(2084524493);
         id = ID_MAINNET;
         subsidyDecreaseBlockCount = 1440;  /* cryptodad May 2019 - mincoin mainnet */
         spendableCoinbaseDepth = 300;
+
         String genesisHash = genesisBlock.getHashAsString();
+
         checkState(genesisHash.equals("12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2"),
                 genesisHash);
+
+        /* cryptodad Aug 2019 - mincoin enabled bip30 from height 1 onwards, but as height 0 is the genesis block it can't be spent
+         * so no need to have a checkpoint for it
+         */
 
         // This contains (at a minimum) the blocks which are not BIP30 compliant. BIP30 changed how duplicate
         // transactions are handled. Duplicated transactions could occur in the case where a coinbase had the same
         // extraNonce and the same outputs but appeared at different heights, and greatly complicated re-org handling.
         // Having these here simplifies block connection logic considerably.
-        checkpoints.put(234665, Sha256Hash.wrap("fba8afe9fc734e146a2273cb956d2c30c7a86832007ded99d6b5fd2637d718e3"));
-        checkpoints.put(1438440, Sha256Hash.wrap("fdb38e23fda036ef965f270285d9a6dd2ce8a05d7c2f3dcd5323d9c834d14799"));
-        checkpoints.put(2029907, Sha256Hash.wrap("67fa9341f35b8bf1170780322bc977cecf946b703021bd2366984b83831dbb82"));
-        checkpoints.put(2215946, Sha256Hash.wrap("e5cbf406c007ebbd2d8ff2cee464b48523f013cbdc4e35b22294b4eef59123f7"));
+        //checkpoints.put(234665, Sha256Hash.wrap("fba8afe9fc734e146a2273cb956d2c30c7a86832007ded99d6b5fd2637d718e3"));
+        //checkpoints.put(1438440, Sha256Hash.wrap("fdb38e23fda036ef965f270285d9a6dd2ce8a05d7c2f3dcd5323d9c834d14799"));
+        //checkpoints.put(2029907, Sha256Hash.wrap("67fa9341f35b8bf1170780322bc977cecf946b703021bd2366984b83831dbb82"));
+        //checkpoints.put(2385842, Sha256Hash.wrap("009158408abfcdca868d2854d3b8fccec7bdb0efd9a2e497098ca418c56b3539"));
 
         dnsSeeds = new String[] {
                 "seed.mincointools.com",

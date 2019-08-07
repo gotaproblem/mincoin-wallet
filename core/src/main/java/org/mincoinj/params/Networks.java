@@ -31,7 +31,7 @@ import java.util.Set;
  */
 public class Networks {
     /** Registered networks */
-    private static Set<? extends NetworkParameters> networks = ImmutableSet.of(TestNet4Params.get(), MainNetParams.get());
+    private static Set<? extends NetworkParameters> networks = ImmutableSet.of(TestNet4Params.get(), MainNetParams.get()); //ImmutableSet.of(TestNet4Params.get(), MainNetParams.get());
 
     public static Set<? extends NetworkParameters> get() {
         return networks;

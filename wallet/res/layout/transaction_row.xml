@@ -100,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:textColor="@color/fg_insignificant"
+
                     android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/transaction_row_fee"
-                android:textColor="@color/fg_insignificant" />
+                android:textColor="@color/currency_value" />
 
             <de.schildbach.wallet.ui.CurrencyTextView
                 android:id="@+id/transaction_row_fee"
@@ -130,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|top"
                 android:layout_marginLeft="8dp"
-                android:textColor="@color/fg_insignificant" />
+                android:textColor="@color/currency_value" />
         </LinearLayout>
 
         <LinearLayout

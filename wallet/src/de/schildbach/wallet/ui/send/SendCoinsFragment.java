@@ -172,6 +172,7 @@ public final class SendCoinsFragment extends Fragment {
 
     private final class ReceivingAddressListener
             implements OnFocusChangeListener, TextWatcher, AdapterView.OnItemClickListener {
+            //implements OnFocusChangeListener, TextWatcher, AdapterView.OnItemSelectedListener { // doesn't work
         @Override
         public void onFocusChange(final View v, final boolean hasFocus) {
             if (!hasFocus) {
@@ -199,6 +200,8 @@ public final class SendCoinsFragment extends Fragment {
 
         @Override
         public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long id) {
+        //public void onItemSelected(final AdapterView<?> parent, final View view, final int position, final long id) { // doesn't work
+
             final AddressBookEntry entry = receivingAddressViewAdapter.getItem(position);
             try {
                 viewModel.validatedAddress = new AddressAndLabel(Constants.NETWORK_PARAMETERS, entry.getAddress(),
@@ -209,6 +212,10 @@ public final class SendCoinsFragment extends Fragment {
                 // swallow
             }
         }
+
+        //@Override
+        //public void onNothingSelected(final AdapterView<?> parent) { // doesn't work
+        //}
     }
 
     private final ReceivingAddressListener receivingAddressListener = new ReceivingAddressListener();
@@ -454,34 +461,35 @@ public final class SendCoinsFragment extends Fragment {
 
         payeeGroup = view.findViewById(R.id.send_coins_payee_group);
 
-        payeeNameView = (TextView) view.findViewById(R.id.send_coins_payee_name);
-        payeeVerifiedByView = (TextView) view.findViewById(R.id.send_coins_payee_verified_by);
+        payeeNameView = view.findViewById(R.id.send_coins_payee_name);
+        payeeVerifiedByView = view.findViewById(R.id.send_coins_payee_verified_by);
 
-        receivingAddressView = (AutoCompleteTextView) view.findViewById(R.id.send_coins_receiving_address);
+        receivingAddressView = view.findViewById(R.id.send_coins_receiving_address);
         receivingAddressViewAdapter = new ReceivingAddressViewAdapter(activity);
         receivingAddressView.setAdapter(receivingAddressViewAdapter);
         receivingAddressView.setOnFocusChangeListener(receivingAddressListener);
         receivingAddressView.addTextChangedListener(receivingAddressListener);
         receivingAddressView.setOnItemClickListener(receivingAddressListener);
+        //receivingAddressView.setOnItemSelectedListener(receivingAddressListener); // doesn't work
 
         receivingStaticView = view.findViewById(R.id.send_coins_receiving_static);
-        receivingStaticAddressView = (TextView) view.findViewById(R.id.send_coins_receiving_static_address);
-        receivingStaticLabelView = (TextView) view.findViewById(R.id.send_coins_receiving_static_label);
+        receivingStaticAddressView = view.findViewById(R.id.send_coins_receiving_static_address);
+        receivingStaticLabelView = view.findViewById(R.id.send_coins_receiving_static_label);
 
         amountGroup = view.findViewById(R.id.send_coins_amount_group);
 
-        final CurrencyAmountView btcAmountView = (CurrencyAmountView) view.findViewById(R.id.send_coins_amount_btc);
+        final CurrencyAmountView btcAmountView = view.findViewById(R.id.send_coins_amount_btc);
         btcAmountView.setCurrencySymbol(config.getFormat().code());
         btcAmountView.setInputFormat(config.getMaxPrecisionFormat());
         btcAmountView.setHintFormat(config.getFormat());
 
-        final CurrencyAmountView localAmountView = (CurrencyAmountView) view.findViewById(R.id.send_coins_amount_local);
+        final CurrencyAmountView localAmountView = view.findViewById(R.id.send_coins_amount_local);
         localAmountView.setInputFormat(Constants.LOCAL_FORMAT);
         localAmountView.setHintFormat(Constants.LOCAL_FORMAT);
         amountCalculatorLink = new CurrencyCalculatorLink(btcAmountView, localAmountView);
         amountCalculatorLink.setExchangeDirection(config.getLastExchangeDirection());
 
-        directPaymentEnableView = (CheckBox) view.findViewById(R.id.send_coins_direct_payment_enable);
+        directPaymentEnableView = view.findViewById(R.id.send_coins_direct_payment_enable);
         directPaymentEnableView.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
@@ -493,9 +501,9 @@ public final class SendCoinsFragment extends Fragment {
             }
         });
 
-        hintView = (TextView) view.findViewById(R.id.send_coins_hint);
+        hintView = view.findViewById(R.id.send_coins_hint);
 
-        directPaymentMessageView = (TextView) view.findViewById(R.id.send_coins_direct_payment_message);
+        directPaymentMessageView = view.findViewById(R.id.send_coins_direct_payment_message);
 
         sentTransactionViewGroup = (FrameLayout) view.findViewById(R.id.transaction_row);
         sentTransactionViewGroup
@@ -503,10 +511,10 @@ public final class SendCoinsFragment extends Fragment {
         sentTransactionViewHolder = new TransactionsAdapter.TransactionViewHolder(view);
 
         privateKeyPasswordViewGroup = view.findViewById(R.id.send_coins_private_key_password_group);
-        privateKeyPasswordView = (EditText) view.findViewById(R.id.send_coins_private_key_password);
+        privateKeyPasswordView = view.findViewById(R.id.send_coins_private_key_password);
         privateKeyBadPasswordView = view.findViewById(R.id.send_coins_private_key_bad_password);
 
-        viewGo = (Button) view.findViewById(R.id.send_coins_go);
+        viewGo = view.findViewById(R.id.send_coins_go);
         viewGo.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -521,7 +529,7 @@ public final class SendCoinsFragment extends Fragment {
             }
         });
 
-        viewCancel = (Button) view.findViewById(R.id.send_coins_cancel);
+        viewCancel = view.findViewById(R.id.send_coins_cancel);
         viewCancel.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -701,10 +709,8 @@ public final class SendCoinsFragment extends Fragment {
         if (viewModel.paymentIntent.hasOutputs())
             return true;
 
-        if (viewModel.validatedAddress != null)
-            return true;
+        return viewModel.validatedAddress != null;
 
-        return false;
     }
 
     private boolean isAmountPlausible() {
@@ -819,7 +825,7 @@ public final class SendCoinsFragment extends Fragment {
                 final Address refundAddress = viewModel.paymentIntent.standard == Standard.BIP70
                         ? wallet.freshAddress(KeyPurpose.REFUND) : null;
                 final Payment payment = PaymentProtocol.createPaymentMessage(
-                        Arrays.asList(new Transaction[] { viewModel.sentTransaction }), finalAmount, refundAddress,
+                        Arrays.asList(viewModel.sentTransaction), finalAmount, refundAddress,
                         null, viewModel.paymentIntent.payeeData);
 
                 if (directPaymentEnableView.isChecked())

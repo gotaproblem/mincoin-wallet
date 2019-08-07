@@ -4,10 +4,10 @@
     <!-- foreground -->
     <color name="fg_significant">#ff000000</color>
     <!--<color name="fg_less_significant">#ff666666</color>-->
-    <color name="fg_less_significant">#ff00f000</color>
+    <color name="fg_less_significant">#00F000</color>
     <color name="fg_white">#ffffffff</color>
     <color name="currency_font">#ffffffff</color>       <!-- text colour for wallet balance currency -->
-    <color name="currency_value">#ff000000</color>       <!-- text colour for wallet balance amount -->
+    <color name="currency_value">#000000</color>       <!-- text colour for wallet balance amount -->
     <color name="wallet_warning_text">#ffffffff</color>       <!-- text colour for wallet warnings -->
     <color name="fg_insignificant">#ffbbbbbb</color>
     <color name="fg_value_positive">#00F000</color>
@@ -24,7 +24,7 @@
     <!--<color name="bg_bright">#0573a4</color>--> <!-- mincoin blue -->
     <color name="bg_bright">#ff4b93cf</color>
     <!--<color name="bg_less_bright">#ffe8e8f0</color>-->
-    <color name="bg_less_bright">#0573a4</color>
+    <color name="bg_less_bright">#0573A4</color>
     <!--<color name="bg_action_bar">#ff222222</color>-->
     <color name="bg_action_bar">#0573a4</color>
     <!--<color name="bg_panel">#fff2f2f8</color>-->

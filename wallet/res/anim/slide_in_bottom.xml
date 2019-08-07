@@ -4,12 +4,11 @@
 
     <translate
         android:duration="@android:integer/config_longAnimTime"
-        android:fromYDelta="100%"
-        android:toYDelta="0%" />
+        android:fromYDelta="100%p"
+        android:toYDelta="0%p"
+        android:fillAfter="true"
+        />
 
-    <alpha
-        android:duration="@android:integer/config_longAnimTime"
-        android:fromAlpha="0.0"
-        android:toAlpha="1.0" />
+
 
 </set>

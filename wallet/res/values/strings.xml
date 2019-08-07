@@ -29,7 +29,7 @@
     <string name="wallet_transactions_fragment_empty_text_sent">No Mincoins sent so far.</string>
     <!--<string name="wallet_transactions_fragment_empty_text_howto">How to get Mincoins?\nTrade for traditional money,\nsell goods or services or\nearn by working.</string>-->
     <string name="wallet_transactions_fragment_empty_text_howto"></string>
-    <string name="wallet_transactions_fragment_empty_remind_backup">Please back up your wallet\nbefore receiving any Mincoins!</string>
+    <string name="wallet_transactions_fragment_empty_remind_backup">Please backup your wallet\nbefore receiving any Mincoins!</string>
     <string name="wallet_transactions_row_warning_backup">Congratulations, you received your first payment! Have you already &lt;u&gt;backed up your wallet&lt;/u&gt;, to protect against loss?</string>
     <string name="wallet_transactions_row_warning_storage_encryption">Hint: to increase the safety of your wallet, you can &lt;u&gt;encrypt your device&lt;/u&gt;. This also protects data of other apps.</string>
     <string name="wallet_transactions_row_warning_chain_forking">The Mincoin network is undergoing maintenance. You\'re advised to not send or receive any coins until maintenance is finished. &lt;u&gt;More information.&lt;/u&gt;</string>
@@ -209,10 +209,10 @@
     <string name="restore_wallet_dialog_success_replay">Your wallet was successfully restored. Its balance will be determined next. This will take some time.</string>
     <string name="restore_wallet_dialog_success_encrypted">Warning: Your wallet is protected by a spending PIN. Make sure you still remember it before you receive to this wallet.</string>
     <string name="import_keys_dialog_failure">Wallet could not be restored:\n\n%s\n\nBad password?</string>
-    <string name="export_keys_dialog_title">Back up wallet</string>
+    <string name="export_keys_dialog_title">Backup wallet</string>
     <string name="backup_wallet_dialog_message">Your backup will be encrypted with the chosen password and written to external storage.</string>
     <string name="backup_wallet_dialog_warning_encrypted">Your wallet is protected by a spending PIN. Make sure you remember the PIN in addition to the backup password!</string>
-    <string name="export_keys_dialog_button_export">Back up</string>
+    <string name="export_keys_dialog_button_export">Backup</string>
     <string name="export_keys_dialog_success"><![CDATA[<p>Your wallet has been backed up to <tt>%s</tt></p><p><b>If the only place your backup exists is on your device, you run the risk of losing both at the same time!</b></p><p>In any case, make sure you remember your backup password.</p>]]></string>
     <string name="export_keys_dialog_failure">Your wallet could not be backed up:\n%s</string>
     <string name="import_export_keys_dialog_password">password</string>
@@ -273,7 +273,7 @@
     <string name="preferences_remind_balance_title">Balance reminder</string>
     <string name="preferences_remind_balance_summary">After a couple of weeks of not being used, the app will notify if there are still coins in the wallet.</string>
     <string name="preferences_show_disclaimer_title">Show disclaimer</string>
-    <string name="preferences_show_disclaimer_summary">Have you really read the safety notes? Did you already back up your wallet to a safe place?</string>
+    <string name="preferences_show_disclaimer_summary">Have you really read the safety notes? Did you already backup your wallet to a safe place?</string>
     <string name="preferences_report_issue_title">Report issue</string>
     <string name="preferences_initiate_reset_title">Reset block chain</string>
     <string name="preferences_initiate_reset_summary">Reset block chain, transactions and wallet balance. Replay will take a while, so only do this if you know why.</string>

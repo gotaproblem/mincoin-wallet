@@ -32,7 +32,7 @@ import static com.google.common.base.Preconditions.checkArgument;
  * <p>A DeterministicHierarchy calculates and keeps a whole tree (hierarchy) of keys originating from a single
  * root key. This implements part of the BIP 32 specification. A deterministic key tree is useful because
  * Bitcoin's privacy system require new keys to be created for each transaction, but managing all these
- * keys quickly becomes unwieldy. In particular it becomes hard to back up and distribute them. By having
+ * keys quickly becomes unwieldy. In particular it becomes hard to backup and distribute them. By having
  * a way to derive random-looking but deterministic keys we can make wallet backup simpler and gain the
  * ability to hand out {@link DeterministicKey}s to other people who can then create new addresses
  * on the fly, without having to contact us.</p>

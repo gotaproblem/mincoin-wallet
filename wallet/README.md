@@ -100,7 +100,7 @@ wallet file is protected against access from non-root users. In the code reposit
 separate 'prod' branch that gets rebased against master with each released version.
 
     # each time
-    cd bitcoin-wallet
+    cd mincoin-wallet
     git fetch origin
     git checkout origin/prod
     gradle clean test build
@@ -165,7 +165,7 @@ Instructions for preparing an NFC tag with your address:
 
 ### BITCOINJ
 
-Bitcoin Wallet uses [bitcoinj](https://bitcoinj.github.io/) for Bitcoin specific logic.
+Mincoin Wallet uses [bitcoinj](https://bitcoinj.github.io/) for Mincoin specific logic.
 
 
 ### EXCHANGE RATES
